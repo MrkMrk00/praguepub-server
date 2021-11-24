@@ -1,0 +1,27 @@
+{
+  "name": "tymova-sem-pr-server",
+  "version": "1.0.0",
+  "description": "Server pro registrovani se do databaze pro tymovy semestralni projekt",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx babel src --ignore src/publicScripts --out-dir lib",
+    "start": "npm run build && npx babel src/publicScripts --out-dir public/javascript && node ./lib/index.js"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "author": "Marek Hauschwitz",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "eslint": "^8.3.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
