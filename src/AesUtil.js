@@ -39,7 +39,7 @@ export default class AesUtil {
             cipherParams,
             key,
             {
-                iv: cryptojs.enc.Hey.parse(iv)
+                iv: cryptojs.enc.Hex.parse(iv)
             }
         )
         return decrypted.toString(cryptojs.enc.Utf8)

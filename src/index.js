@@ -1,7 +1,7 @@
 import express from 'express'
-
+import { connect as connectDB } from './db'
 import indexRouter from './routes/indexRouter'
-import postInfoRouter from './routes/postInfoRouter'
+import postInfoRouter from './routes/passwordPostRouter'
 
 const app = express(),
     path = process.cwd(),
@@ -12,6 +12,8 @@ app.use('/register', postInfoRouter)
 
 app.use('/public', express.static(path + '/public'))
 
-app.listen(port, () => {
-    console.log('listening on port ' + port)
+connectDB(() => {
+    app.listen(port, () => {
+        console.log('listening on port ' + port)
+    })
 })

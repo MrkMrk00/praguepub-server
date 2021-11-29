@@ -3,7 +3,8 @@ import express from 'express'
 const router = express.Router(),
     path = process.cwd()
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+    console.log('tvoje asdasdasd')
     res.sendFile(path + '/views/index.html')
 })
 

@@ -5,13 +5,19 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx babel src --ignore src/publicScripts --out-dir lib",
-    "start": "npm run build && npx babel src/publicScripts --out-dir public/javascript && node ./lib/index.js"
+    "watch": "npx babel src --ignore src/publicScripts --out-dir lib --watch && npx babel src/publicScripts --out-dir public/javascript --watch",
+    "build": "npx babel src --ignore src/publicScripts --out-dir lib && npx babel src/publicScripts --out-dir public/javascript",
+    
+    "start": "npm run build && node ./lib/index.js",
+    "dev": "npx nodemon -w /lib -w /public/javascript ./lib/index.js"
   },
   "babel": {
     "presets": [
       "@babel/preset-env"
-    ]
+    ],
+    "targets": {
+      "esmodules": true
+    }
   },
   "author": "Marek Hauschwitz",
   "license": "ISC",
@@ -19,11 +25,13 @@
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
-    "eslint": "^8.3.0"
+    "eslint": "^8.3.0",
+    "nodemon": "^2.0.15"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
     "crypto-js": "^4.1.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongodb": "^4.2.0"
   }
 }
