@@ -3,16 +3,23 @@
     <head>
         <meta http-equiv="content-type" content="text/html" charset="UTF-8">
         <title>Registrování</title>
+        <link rel="stylesheet" href="/public/stylesheets/style.css">
     </head>
     <body>
-        <form>
+        <div id="register-form">
             <span>
-                <label>
-                    Přihlašovací jméno:
-                    <input class="username">
-                </label>
+                <label for="username">Přihlašovací jméno:</label>
+                <input id="username">
             </span>
-        </form>
+
+            <span>
+                <label for="password">Heslo:</label><input id="password">
+            </span>
+
+            <span class="register-button">
+                <button id="send-button">Registrovat</button>
+            </span>
+        </div>
 
         <script type="text/javascript" src="/public/javascript/sendFormResult.js"></script>
     </body>

@@ -1,0 +1,25 @@
+#register-form {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 35%;
+}
+
+#register-form label {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#register-form button {
+    max-width: 150px;
+}
+
+#register-form span {
+    display: flex;
+    justify-content: space-between;
+}
+
+#register-form .register-button {
+    justify-content: space-around;
+}

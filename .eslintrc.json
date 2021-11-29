@@ -21,9 +21,14 @@
             "error",
             "single"
         ],
+        "no-unused-vars": [
+            "warn",
+            "local"
+        ],
         "semi": [
             "error",
             "never"
-        ]
+        ],
+        "no-undef": 0
     }
 }
