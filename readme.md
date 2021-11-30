@@ -1,4 +1,4 @@
-# PrguePub server
+# PraguePub server
 
 ## Konfigurace
 
