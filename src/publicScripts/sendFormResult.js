@@ -13,24 +13,29 @@ function loadResult() {
     pswElement.value = ''
 
     //odeslání POST requestu na passwordPostRouter se jménem a heslem
-    fetch('/register', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(userInput)
-    }).then((res) => {
-        res.text().then((text) => {
-            const resJson = JSON.parse(text)
-            console.log(text)
-            console.log(resJson)
-            httpResponseField.innerHTML = 
-                resJson.message
-                + ': '
-                + userInput.username
+    fetch(
+        '/register', 
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userInput)
         })
-
-    })
+        .then((res) => {
+            res.text()
+                .then((text) => {
+                    const resJson = JSON.parse(text)
+                    
+                    console.log(text)
+                    console.log(resJson)
+                    
+                    httpResponseField.innerHTML = 
+                        resJson.message
+                        + ': '
+                        + userInput.username
+                })
+        })
 }
 
 //přidává onClick listener na tlačítko
