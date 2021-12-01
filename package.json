@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "npx babel src --ignore src/publicScripts --out-dir lib --watch && npx babel src/publicScripts --out-dir public/javascript --watch",
-    "build": "npx babel src --ignore src/publicScripts --out-dir lib && npx babel src/publicScripts --out-dir public/javascript",
-    
+    "build:server": "npx babel src --ignore src/publicScripts --out-dir lib",
+    "build:public": "npx babel src/publicScripts --out-dir public/javascript",
+    "build": "npm run build:server && npm run build:public",
     "start": "npm run build && node ./lib/index.js",
-    "dev": "npx nodemon -w /lib -w /public/javascript ./lib/index.js"
+    "lint": "npx eslint ./src --ext .js",
+    "fix": "npx eslint ./src --ext .js --fix",
+    "dev": "npx nodemon -w ./src --exec npx babel-node ./src/index.js"
   },
   "babel": {
     "presets": [
@@ -24,6 +26,7 @@
   "devDependencies": {
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
+    "@babel/node": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
     "eslint": "^8.3.0",
     "nodemon": "^2.0.15"
