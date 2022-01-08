@@ -14,7 +14,7 @@ function loadResult() {
 
     //odeslání POST requestu na passwordPostRouter se jménem a heslem
     fetch(
-        '/register', 
+        '/register',
         {
             method: 'POST',
             headers: {
@@ -26,14 +26,12 @@ function loadResult() {
             res.text()
                 .then((text) => {
                     const resJson = JSON.parse(text)
-                    
+
                     console.log(text)
                     console.log(resJson)
-                    
-                    httpResponseField.innerHTML = 
+
+                    httpResponseField.innerHTML =
                         resJson.message
-                        + ': '
-                        + userInput.username
                 })
         })
 }

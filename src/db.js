@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb'
 
-const conString = 'mongodb+srv://marek:123456abc@cluster0.g7yxo.mongodb.net'
+const conString = 'mongodb+srv://guest:w22dY4DAJ7c2Rzf@cluster0.g7yxo.mongodb.net'
 export let usersCollection
 export let mongoClient
 
@@ -10,12 +10,12 @@ export function connect(callback) {
             console.log('failed to connect to mongodb')
             return
         }
-        usersCollection = client.db('users').collection('users')
+        usersCollection = client.db('prague_pub').collection('uzivatele')
         mongoClient = client
         callback()
-    })    
+    })
 }
 
 export function close() {
-    mongodb.close()
+    MongoClient.close()
 }

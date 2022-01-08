@@ -16,9 +16,9 @@ function handlePost(req, res) {
     const uname = req.body.username
     //heslo je doplněno (oříznuto) do 16 charakterů pro potřeby zašifrování
     const pwd = fillTo16Chars(req.body.password)
-    
+
     if (uname && pwd) {
-        
+
         addUser(uname, pwd, (msg) => {
             res.json({message: msg})
         })
@@ -28,12 +28,17 @@ function handlePost(req, res) {
 function addUser(username, password, callback) {
     usersCollection.findOne({userName: username}).then((doc) => {
         if (!doc) {
-            const newUser = 
+            const newUser =
             {
                 userName: username,
-                password: encrypt('updateUserPassword123', password)
+                password: encrypt('sgmKC57csTEesGES', password)
             }
-            usersCollection.insertOne(newUser).then(() => callback('uživatel úspěšně přidán'))
+            usersCollection.insertOne(newUser, (err, res) => {
+                if (err) {
+                    callback('nepodarilo se pridat uzivatele')
+                }
+                else callback(`pridan uzivatel ${newUser.userName}`)
+            })
         }
         else callback('uživatel již existuje')
     })
